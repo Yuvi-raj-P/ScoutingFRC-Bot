@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Dynamic Data Table</title>
+  <style>
+    body,
+    input {
+      font-family: "Poppins", sans-serif;
+    }
+
+    h2 {
+      font-size: 2.1rem;
+      font-weight: 600;
+      color: white;
+    }
+
+    h4 {
+      color: #bababa;
+      font-weight: 400;
+
+
+    }
+
+    h4:first-of-type {
+      margin-bottom: 0;
+    }
+
+    h4:last-of-type {
+      margin-top: 0;
+    }
+
+    table {
+      width: 50%;
+      border-collapse: collapse;
+    }
+    
+
+    th a {
+      color: white !important;
+      text-decoration: none;
+    }
+
+    th,
+    td {
+      color: white;
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: center;
+      /* Align content for better mobile display */
+      word-wrap: break-word;
+      /* Allow long words to wrap */
+    }
+
+    th {
+      background-color: rgb(52, 52, 52);
+      color: white;
+    }
+
+    /* Responsive table adjustments */
+    @media (max-width: 768px) {
+
+      /* Target screens below 768px wide */
+      table,
+      thead,
+      tbody,
+      th,
+      td,
+      tr {
+        display: block;
+      }
+
+      thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+      }
+
+      td a {
+  color: white !important;
+  text-decoration: none;
+}
+
+      tr {
+        border: 1px solid #ddd;
+      }
+
+      td {
+        border: none;
+        color: white;
+        border-bottom: 1px solid #ddd;
+        position: relative;
+        padding-left: 50%;
+      }
+
+      td:before {
+        position: absolute;
+        top: 6px;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        content: attr(data-label);
+      }
+    }
+  </style>
+  </style>
+</head>
+
+<body style="background-color: black;">
+
+  <h2>Hello, Murali Yuvraj Pichhika</h2>
+  <h4>Scouting a match? click here</h4>
+  <h4>Scouting in Pits</h4>
+  
+  </a>
+  <div id="table-container">
+    <!-- The table will be generated here -->
+  </div>
+
+  <script>
+
+    const apiKey = 'AIzaSyD5c8iRntBAnrsNOesMAMrOp1Hv2q9IMwo'; // Replace with your actual API key
+    const spreadsheetId = '1ahZLGBMZaAEfWcCr7k4ySrDH1cat2v1vstJseDhPVik'; // Replace with your actual spreadsheet ID
+    const range = 'Sheet1!A:B'; // Adjust the range according to your sheet
+
+    fetch(`https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}?key=${apiKey}`)
+      .then(response => response.json())
+      .then(data => {
+        const rows = data.values;
+        let table = '<table>';
+        // Generate table header
+        table += '<tr><th>' + rows[0][0] + '</th><th>' + rows[0][1] + '</th></tr>';
+        // Generate table rows
+        for (let i = 1; i < rows.length; i++) {
+          table += '<tr><td><a href="ProfileScreen.html?team=' + encodeURIComponent(rows[i][0]) + '" style="color: white;">' + rows[i][0] + '</a></td><td>' + rows[i][1] + '</td></tr>';
+        }
+        table += '</table>';
+        document.getElementById('table-container').innerHTML = table;
+      })
+      .catch(error => console.error('Error fetching data:', error));
+  </script>
+
+</body>
+
+</html>
