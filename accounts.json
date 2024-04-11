@@ -5,14 +5,16 @@
     "type": "Scout"
   }
   {
-    "username": "Yuvraj Pichhika",
+    "username": "pichhika.1@napls.us",
     "password": "yuvrajPichhika96",
-    "type": "Admin"
+    "type": "Admin",
+    "name": "Yuvraj"
   }
   {
-    "username": "Dana Stan",
+    "username": "stan.2@napls.us",
     "password": "danaStan54",
-    "type": "Admin"
+    "type": "Admin",
+    "name": "Dana"
   }
   
 ]
