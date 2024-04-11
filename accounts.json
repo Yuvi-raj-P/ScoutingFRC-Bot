@@ -4,4 +4,15 @@
     "password": "12345",
     "type": "Scout"
   }
+  {
+    "username": "Yuvraj Pichhika",
+    "password": "yuvrajPichhika96",
+    "type": "Admin"
+  }
+  {
+    "username": "Dana Stan",
+    "password": "danaStan54",
+    "type": "Admin"
+  }
+  
 ]
