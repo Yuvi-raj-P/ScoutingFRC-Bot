@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scouting</title>
+  <link rel="stylesheet" href="mainScouter.css" />
+</head>
+
+<body>
+  <main>
+    <div class="box">
+      <div class="inner-box">
+        <div class="forms-wrap">
+          <div class="formbox">
+            <div style="margin-top: 20px;"></div>
+            <div class="logo">
+
+              <img src="logo.png" alt="The Digital Eagles" />
+
+              <h4>The Digital Eagles</h4>
+            </div>
+
+            <div id="screen1" class="heading">
+              <div style="margin-top: 20px;"></div>
+              <h2>Hello, Scouter</h2>
+
+
+              <div style="margin-top: 10px;"></div>
+
+              <form>
+                <label for="matchNumber" style="font-family: 'Poppins', sans-serif; color: white;">Match: </label>
+                <input type="text" id="matchNumber" name="matchNumber" style="background: none;
+                border: none;
+                outline: none;
+                border-bottom: 1px solid #bbb; color: white; margin-left: 10px; width: 50px;">
+                <br><br>
+                <label for="teamNumber" style="font-family: 'Poppins', sans-serif; color: white;">Team Number: </label>
+                <input type="text" id="teamNumber" name="teamNumber" style="background: none;
+                border: none;
+                outline: none;
+                border-bottom: 1px solid #bbb; color: white; margin-left: 10px; width: 50px;">
+              </form>
+
+              <div style="margin-top: 20px;"></div>
+
+
+              <h6>Please click start when a hear countdown. Reload the page when mistakely clicked the button.</h6>
+              <div style="margin-top: 20px;"></div>
+              <button id="start-btn" class="start-btn" style="font-family: 'Poppins', sans-serif;">Start</button>
+
+            </div>
+
+            <div id="screen2" class="heading">
+              <h2>Auto</h2>
+              <div style="margin-top: 10px;"></div>
+              <h3 style="color: white; font-size: 1.4rem;" id="timer">0:15 s</h3>
+              <h6>Please watch the match closely to see how the robot scores and answer these questions below.</h6>
+              <br></br>
+              <h6>Look at the auto path(where the robot moves) draw its path below, press undo to reset the canvas.</h6>
+              <div style="margin-top: 20px;"></div>
+              <canvas id="drawing-canvas"></canvas>
+              <div style="margin-top: 20px;"></div>
+              <button class="autoimg-btn" id="undo-btn" style="font-family: 'Poppins', sans-serif;">Undo</button>
+              <button class="autoimg-btn" id="export-btn" style="font-family: 'Poppins', sans-serif;">Submit</button>
+
+              <h3 style="color: white; font-size: 1.4rem;" id="timer">Amp</h3>
+              <button id="minus-btn" class="plusmi-btn">-</button>
+
+              <span id="value"
+                style=" margin-left: 10px; margin-right: 10px; font-family: 'Poppins', sans-serif; color: white; font-size: 2rem;">0</span>
+              <button id="plus-btn" class="plusmi-btn">+</button>
+
+
+              <h3 style="color: white; font-size: 1.4rem;" id="timer">Speaker Shots Attempted</h3>
+              <button id="sminus-btn" class="plusmi-btn">-</button>
+              <span id="svalue"
+                style=" margin-left: 10px; margin-right: 10px; font-family: 'Poppins', sans-serif; color: white; font-size: 2rem;">0</span>
+              <button id="splus-btn" class="plusmi-btn">+</button>
+
+              <h3 style="color: white; font-size: 1.4rem;">Speaker Shots Made</h3>
+              <button id="smminus-btn" class="plusmi-btn">-</button>
+              <span id="unique-smvalue"
+                style=" margin-left: 10px; margin-right: 10px; font-family: 'Poppins', sans-serif; color: white; font-size: 2rem;">0</span>
+              <button id="smplus-btn" class="plusmi-btn">+</button>
+            </div>
+
+            <div id="screen3" class="heading">
+
+              <h2>TeleOp</h2>
+              <div style="margin-top: 10px;"></div>
+              <h3 style="color: white; font-size: 1.4rem;" id="timer2">2:15 s</h3>
+              <h6>Please watch the match closely to see how the robot scores and answer these questions below.</h6>
+              <div style="margin-top: 20px;"></div>
+
+              <h3 style="color: white; font-size: 1.4rem;">What is the role of bot? Select All That Apply:</h3>
+              <div style="margin-top: 20px;"></div>
+              <h4 style="color: white;">Important: Dont select multiple options when selected Feeder as the Bot</h4>
+              <div style="margin-top: 20px;"></div>
+              <input type="checkbox" id="option1" name="option1" value="option1">
+              <label for="option1" style="color: white;">Feeder</label><br>
+              <input type="checkbox" id="option2" name="option2" value="option2">
+              <label for="option2" style="color: white;">Speaker (cleaner or shooter bot)</label><br>
+              <input type="checkbox" id="option3" name="option3" value="option3">
+              <label for="option3" style="color: white;">Amp</label><br>
+
+              <div id="feederOptions" style="margin-top: 20px;">
+                <h3 style="color: white; font-size: 1.4rem;">Where were majority of the notes fed? </h3>
+                <input type="checkbox" id="option4" name="option4" value="option4">
+                <label for="option4" style="color: white;">Speaker</label><br>
+
+                <input type="checkbox" id="option5" name="option5" value="option5">
+                <label for="option5" style="color: white;">Amp</label><br>
+                <input type="checkbox" id="option6" name="option6" value="option6">
+                <label for="option6" style="color: white;">Mid Field</label><br>
+
+                <div style="margin-top: 20px;"></div>
+                <h3 style="color: white; font-size: 1.4rem;">Notes Feed</h3>
+                <button id="Ateleminus-btn" class="plusmi-btn">-</button>
+
+                
+                <span id="Atelevalue"
+                  style=" margin-left: 10px; margin-right: 10px; font-family: 'Poppins', sans-serif; color: white; font-size: 2rem;">0</span>
+                <button id="Ateleplus-btn" class="plusmi-btn">+</button>
+
+              </div>
+
+              <div id="speakerOptions">
+                <div style="margin-top: 20px;"></div>
+
+                <h3 style="color: white; font-size: 1.4rem;">Amp</h3>
+                <button id="Asteleminus-btn" class="plusmi-btn">-</button>
+
+                <span id="Astelevalue"
+                  style=" margin-left: 10px; margin-right: 10px; font-family: 'Poppins', sans-serif; color: white; font-size: 2rem;">0</span>
+                <button id="Asteleplus-btn" class="plusmi-btn">+</button>
+
+
+                <h3 style="color: white; font-size: 1.4rem;">Speaker Shots Attempted</h3>
+                <button id="telesminus-btn" class="plusmi-btn">-</button>
+                <span id="telesvalue"
+                  style=" margin-left: 10px; margin-right: 10px; font-family: 'Poppins', sans-serif; color: white; font-size: 2rem;">0</span>
+                <button id="telesplus-btn" class="plusmi-btn">+</button>
+
+                <h3 style="color: white; font-size: 1.4rem;">Speaker Shots Made</h3>
+                <button id="telesmminus-btn" class="plusmi-btn">-</button>
+                <span id="telesmvalue"
+                  style=" margin-left: 10px; margin-right: 10px; font-family: 'Poppins', sans-serif; color: white; font-size: 2rem;">0</span>
+                <button id="telesmplus-btn" class="plusmi-btn">+</button>
+              </div>
+
+
+
+            </div>
+
+            <button id="finish-btn" class="finish-btn" style="font-family: 'Poppins', sans-serif;">Send info</button>
+
+            <p class="text">
+              Made by Yuvraj
+
+            </p>
+            <p class="text">
+              All Rights Reserved by 5667 <a href="#">Find more here</a>
+
+            </p>
+          </div>
+          </form>
+
+        </div>
+      </div>
+  </main>
+
+  <!-- Javascript file -->
+
+  <script src="appScouter.js"></script>
+</body>
+
+</html>
