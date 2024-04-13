@@ -48,8 +48,8 @@ const ctx = canvas.getContext('2d');
 const exportBtn = document.getElementById('export-btn');
 
 // Set canvas size
-canvas.width = 500;
-canvas.height = 300;
+canvas.width = 370;
+canvas.height = 200;
 
 // Set stroke color to white
 ctx.strokeStyle = 'black';
