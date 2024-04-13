@@ -271,6 +271,7 @@ main.sign-up-mode .carousel {
   left: 0%;
 }
 
+
 .carousel {
   position: absolute;
   height: 100%;
@@ -371,11 +372,13 @@ main.sign-up-mode .carousel {
   .box {
     height: auto;
     max-width: 550px;
+    left:0;
     overflow: hidden;
   }
 
   .inner-box {
     min-height: 700px;
+    
     position: static;
     transform: none;
     width: revert;
@@ -385,6 +388,7 @@ main.sign-up-mode .carousel {
 
   .forms-wrap {
     position: revert;
+    left: 0;
     width: 100%;
     height: auto;
   }
@@ -412,9 +416,24 @@ main.sign-up-mode .carousel {
   }
 }
 
-@media (max-width: 530px) {
+@media (min-width: 30px) {
+  #screen1{
+    width: 100%;
+  }
+  #screen2{
+    width: 100%;
+  }
+  #screen3{
+    width: 100%;
+  }
+  .formbox {
+    /* Adjust styles as needed for smaller screens */
+    width: 50%; /* leave some margin on the sides */
+    left: 0;
+    
+  }
   main {
-    padding: 1rem;
+    padding: 0rem;
   }
 
   .box {
@@ -422,7 +441,7 @@ main.sign-up-mode .carousel {
   }
 
   .inner-box {
-    padding: 1rem;
+    padding-left: 0;
   }
 
   
@@ -437,5 +456,8 @@ main.sign-up-mode .carousel {
 
   form {
     padding: 1rem 2rem 1.5rem;
+  }
+  .forms-wrap {
+    padding-left: 5%;
   }
 }
