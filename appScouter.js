@@ -1,35 +1,59 @@
-
+document.getElementById('finished-screen').style.display = 'none';
 const urlParams = new URLSearchParams(window.location.search);
 const Name = urlParams.get('name');
 let imageExportUrl = '';
+let audio = new Audio('Sel.wav');
+let audio2 = new Audio('Rew.wav');
 
 document.querySelector('#screen1 h2').textContent = 'Hello, ' + Name;
+document.querySelector('#finished-text').textContent = 'Great Job, ' + Name;
 
 
 var timerStarted = false;
 
 document.getElementById('start-btn').addEventListener('click', function () {
+  audio.play();
   if (timerStarted) {
     return;
   }
 
   timerStarted = true;
   window.scrollTo(0, 500); 
-  var timeLeft = 15;
+  var timeLeft = 5;
   var timerId = setInterval(countdown, 1000);
 
   function countdown() {
     if (timeLeft == 0) {
       clearTimeout(timerId);
       document.getElementById('timer').innerHTML = '0:00 s';
-      window.scrollTo(500, 1000);
-      var timeLeft2 = 2 * 60 + 15; // 2 minutes and 15 seconds
+      window.scrollTo(500, 1450);
+      var timeLeft2 = 2; // 2 minutes and 15 seconds
+      audio.play();
       var timerId2 = setInterval(countdown2, 1000);
 
       function countdown2() {
         if (timeLeft2 == 0) {
           clearTimeout(timerId2);
           document.getElementById('timer2').innerHTML = '0:00 s';
+        
+          // Start countdown3
+          var timeLeft3 = 20; // 20 seconds
+          audio.play();
+          window.scrollTo(1450, 2450);
+          var timerId3 = setInterval(countdown3, 1000);
+        
+          function countdown3() {
+           
+            if (timeLeft3 == 0) {
+              clearTimeout(timerId3);
+              document.getElementById('timer3').innerHTML = '0:00 s';
+            } else {
+              var minutes = Math.floor(timeLeft3 / 60);
+              var seconds = timeLeft3 % 60;
+              document.getElementById('timer3').innerHTML = minutes + ':' + (seconds < 10 ? '0' : '') + seconds + ' s';
+              timeLeft3--;
+            }
+          }
         } else {
           var minutes = Math.floor(timeLeft2 / 60);
           var seconds = timeLeft2 % 60;
@@ -48,8 +72,15 @@ const ctx = canvas.getContext('2d');
 const exportBtn = document.getElementById('export-btn');
 
 // Set canvas size
-canvas.width = 370;
-canvas.height = 200;
+if (window.innerWidth <= 850) {
+  // If the screen width is 850px or less (mobile devices)
+  canvas.width = 400;
+  canvas.height = 220;
+} else {
+  // If the screen width is more than 850px (desktop devices)
+  canvas.width = 600;
+  canvas.height = 350;
+}
 
 // Set stroke color to white
 ctx.strokeStyle = 'black';
@@ -63,6 +94,7 @@ backgroundImage.onload = function() {
 };
 
 // Add event listeners for drawing
+// Add event listeners for drawing
 let isDrawing = false;
 let lastX = 0;
 let lastY = 0;
@@ -72,18 +104,36 @@ canvas.addEventListener('mousemove', draw);
 canvas.addEventListener('mouseup', stopDrawing);
 canvas.addEventListener('mouseout', stopDrawing);
 
+// Add event listeners for touch devices
+canvas.addEventListener('touchstart', (e) => {
+  e.preventDefault();
+  startDrawing(e.touches[0]);
+});
+canvas.addEventListener('touchmove', (e) => {
+  e.preventDefault();
+  draw(e.touches[0]);
+});
+canvas.addEventListener('touchend', () => {
+  isDrawing = false;
+});
+
 function startDrawing(e) {
   isDrawing = true;
-  [lastX, lastY] = [e.offsetX, e.offsetY];
+  let rect = canvas.getBoundingClientRect();
+  lastX = e.clientX - rect.left;
+  lastY = e.clientY - rect.top;
 }
 
 function draw(e) {
   if (!isDrawing) return;
   ctx.beginPath();
+  let rect = canvas.getBoundingClientRect();
+  let newX = e.clientX - rect.left;
+  let newY = e.clientY - rect.top;
   ctx.moveTo(lastX, lastY);
-  ctx.lineTo(e.offsetX, e.offsetY);
+  ctx.lineTo(newX, newY);
   ctx.stroke();
-  [lastX, lastY] = [e.offsetX, e.offsetY];
+  [lastX, lastY] = [newX, newY];
 }
 
 function stopDrawing() {
@@ -98,7 +148,7 @@ backgroundImage.onload = function() {
 };
 });
 // Export canvas as JPG
-exportBtn.addEventListener('click', exportCanvas);
+
 
 function exportCanvas() {
   canvas.toBlob(function(blob) {
@@ -209,22 +259,13 @@ var avalue = 0;
     document.getElementById('telesmvalue').textContent = telesmvalue;
   });
 
-  document.getElementById('option1').addEventListener('change', function() {
-    var feederOptions = document.getElementById('feederOptions');
-    var speakerOptions = document.getElementById('speakerOptions');
-  
-    if (this.checked) {
-      feederOptions.style.display = 'block';
-      speakerOptions.style.display = 'none';
-    } else {
-      feederOptions.style.display = 'none';
-      speakerOptions.style.display = 'block';
-    }
-  });
 
-  //The Submit Button
+
 //The Submit Button
+
 document.getElementById('finish-btn').addEventListener('click', function() {
+  audio2.play();
+  document.getElementById('finished-screen').style.display = 'flex';
   const canvas = document.getElementById('drawing-canvas');  // Please set the ID of the canvas.
   const imageExportUrl = canvas.toDataURL('image/jpeg');
   const teamNumber = document.getElementById('teamNumber').value;
