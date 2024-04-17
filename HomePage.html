@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scouting</title>
+  <link rel="stylesheet" href="mainScouter.css" />
+</head>
+
+<body>
+  <div id="finished-screen"
+    style="display: none; position: fixed; top: 0; right: 0; bottom: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 1); color: white; display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 9999;">
+    <h1 id="finished-text">Great job</h1>
+    <h6 style="color: #bababa; font-size: 0.75rem; display: inline; margin-left: 3%; margin-top: 10%;">
+      Ready for another one?</h6>
+    <button onclick="location.reload(); window.scrollTo(0, 0);"
+      style="background: white; border: none; border-radius: 50%; width: 50px; height: 50px; display: flex; justify-content: center; align-items: center; margin-top: 20px;">
+      <img src="images/arrow.png" alt="Arrow" style="width: 20px; height: 20px;">
+    </button>
+  </div>
+  <main>
+    <div class="box">
+      <div class="inner-box">
+
+        <div class="forms-wrap">
+
+          <div style="margin-top: 20px;"></div>
+          <div class="logo">
+
+            <img src="logo.png" alt="The Digital Eagles" />
+
+            <h4>The Digital Eagles</h4>
+          </div>
+
+          <div id="screen1" class="heading">
+            <div style="margin-top: 20px;"></div>
+            <h2>Hello, Scouter</h2>
+
+
+            <div style="margin-top: 10px;"></div>
+
+            <form>
+              <label for="matchNumber" style="font-family: 'Poppins', sans-serif; color: white;">Match: </label>
+              <input type="text" id="matchNumber" name="matchNumber" style="background: none;
+                border: none;
+                outline: none;
+                border-bottom: 1px solid #bbb; color: white; margin-left: 10px; width: 50px;">
+              <br><br>
+              <label for="teamNumber" style="font-family: 'Poppins', sans-serif; color: white;">Team Number: </label>
+              <input type="text" id="teamNumber" name="teamNumber" style="background: none;
+                border: none;
+                outline: none;
+                border-bottom: 1px solid #bbb; color: white; margin-left: 10px; width: 50px;">
+            </form>
+
+            <div style="margin-top: 20px;"></div>
+
+
+            <h6>Please click start when you hear countdown. Reload the page when mistakely clicked the button.</h6>
+            <div style="margin-top: 20px;"></div>
+            <button id="start-btn" class="start-btn" style="font-family: 'Poppins', sans-serif;">Start</button>
+
+          </div>
+
+          <div id="screen2" class="heading">
+            <h2>Auto</h2>
+            <div style="margin-top: 10px;"></div>
+            <h3 style="color: white; font-size: 1.4rem;" id="timer">0:15 s</h3>
+            <h6>Please watch the match closely to see how the robot scores and answer these questions below.</h6>
+            <br></br>
+            <h6>Look at the auto path(where the robot moves) draw its path below, press undo to reset the canvas.</h6>
+            <div style="margin-top: 20px;"></div>
+            <canvas id="drawing-canvas"></canvas>
+            <div style="margin-top: 20px;"></div>
+            <button class="autoimg-btn" id="undo-btn" style="font-family: 'Poppins', sans-serif;">Undo</button>
+
+
+            <h3 style="color: white; font-size: 1.4rem;" id="timer">Amp</h3>
+            <button id="minus-btn" class="plusmi-btn">-</button>
+
+            <span id="value"
+              style=" margin-left: 10px; margin-right: 10px; font-family: 'Poppins', sans-serif; color: white; font-size: 2rem;">0</span>
+            <button id="plus-btn" class="plusmi-btn">+</button>
+
+
+            <h3 style="color: white; font-size: 1.4rem;" id="timer">Speaker Shots Attempted</h3>
+            <button id="sminus-btn" class="plusmi-btn">-</button>
+            <span id="svalue"
+              style=" margin-left: 10px; margin-right: 10px; font-family: 'Poppins', sans-serif; color: white; font-size: 2rem;">0</span>
+            <button id="splus-btn" class="plusmi-btn">+</button>
+
+            <h3 style="color: white; font-size: 1.4rem;">Speaker Shots Made</h3>
+            <button id="smminus-btn" class="plusmi-btn">-</button>
+            <span id="unique-smvalue"
+              style=" margin-left: 10px; margin-right: 10px; font-family: 'Poppins', sans-serif; color: white; font-size: 2rem;">0</span>
+            <button id="smplus-btn" class="plusmi-btn">+</button>
+          </div>
+
+          <div id="screen3" class="heading">
+
+            <h2>TeleOp</h2>
+            <div style="margin-top: 10px;"></div>
+            <h3 style="color: white; font-size: 1.4rem;" id="timer2">2:15 s</h3>
+            <h6>Please watch the match closely to see how the robot scores and answer these questions below.</h6>
+            <div style="margin-top: 20px;"></div>
+
+            <h3 style="color: white; font-size: 1.4rem;">What is the role of bot? Select All That Apply:</h3>
+            <div style="margin-top: 20px;"></div>
+
+
+            <input type="checkbox" id="Feeder" name="Feeder" value="Feeder">
+            <label for="Feeder" style="color: white;">Feeder</label><br>
+            <input type="checkbox" id="Speaker" name="Speaker" value="Speaker">
+            <label for="Speaker" style="color: white;">Speaker (cleaner or shooter bot)</label><br>
+            <input type="checkbox" id="Amp" name="Amp" value="Amp">
+            <label for="Amp" style="color: white;">Amp</label><br>
+            <input type="checkbox" id="Defense" name="Defense" value="Defense">
+            <label for="Defense" style="color: white;">Defense</label><br>
+
+            <div id="feederOptions" style="margin-top: 20px;">
+              <h3 style="color: white; font-size: 1.4rem;">Where were majority of the notes fed? </h3>
+              <input type="checkbox" id="At Speaker" name="At Speaker" value="At Speaker">
+              <label for="At Speaker" style="color: white;">Speaker</label><br>
+
+              <input type="checkbox" id="At Amp" name="At Amp" value="At Amp">
+              <label for="At Amp" style="color: white;">Amp</label><br>
+              <input type="checkbox" id="Mid Field" name="Mid Field" value="Mid Field">
+              <label for="Mid Field" style="color: white;">Mid Field</label><br>
+
+              <div style="margin-top: 20px;"></div>
+              <h3 style="color: white; font-size: 1.4rem;">How many notes were fed outside the arena? </h3>
+              <input type="text" id="outsideFed" name="outsideFed" style="background: none;
+                border: none;
+                outline: none;
+                border-bottom: 1px solid #bbb; color: white; margin-left: 10px; width: 50px;">
+              <br><br>
+
+            </div>
+
+            <div id="speakerOptions">
+              <div style="margin-top: 20px;"></div>
+              <h3 style="color: white; font-size: 1.4rem;">Notes Feed</h3>
+              <button id="Ateleminus-btn" class="plusmi-btn">-</button>
+
+
+              <span id="Atelevalue"
+                style=" margin-left: 10px; margin-right: 10px; font-family: 'Poppins', sans-serif; color: white; font-size: 2rem;">0</span>
+              <button id="Ateleplus-btn" class="plusmi-btn">+</button>
+
+              <h3 style="color: white; font-size: 1.4rem;">Amp</h3>
+              <button id="Asteleminus-btn" class="plusmi-btn">-</button>
+
+              <span id="Astelevalue"
+                style=" margin-left: 10px; margin-right: 10px; font-family: 'Poppins', sans-serif; color: white; font-size: 2rem;">0</span>
+              <button id="Asteleplus-btn" class="plusmi-btn">+</button>
+
+
+              <h3 style="color: white; font-size: 1.4rem;">Speaker Shots Attempted</h3>
+              <button id="telesminus-btn" class="plusmi-btn">-</button>
+              <span id="telesvalue"
+                style=" margin-left: 10px; margin-right: 10px; font-family: 'Poppins', sans-serif; color: white; font-size: 2rem;">0</span>
+              <button id="telesplus-btn" class="plusmi-btn">+</button>
+
+              <h3 style="color: white; font-size: 1.4rem;">Speaker Shots Made</h3>
+              <button id="telesmminus-btn" class="plusmi-btn">-</button>
+              <span id="telesmvalue"
+                style=" margin-left: 10px; margin-right: 10px; font-family: 'Poppins', sans-serif; color: white; font-size: 2rem;">0</span>
+              <button id="telesmplus-btn" class="plusmi-btn">+</button>
+            </div>
+
+
+
+          </div>
+          <div id="screen4" class="heading">
+            <h2>End Game</h2>
+            <div style="margin-top: 10px;"></div>
+            <h3 style="color: white; font-size: 1.4rem;" id="timer3">0:20 s</h3>
+            <h6>Please watch the match closely to see how the robot scores and answer these questions below.</h6>
+            <div style="margin-top: 20px;"></div>
+
+            <h3 style="color: white; font-size: 1.4rem;">Is the robot on the stage chain?</h3>
+            <div style="margin-top: 10px;"></div>
+            <input type="radio" id="option8" name="bchainOption" value="Balanced along with alliance member on chain">
+            <label for="option8" style="font-size: 14px; color: white;">Balanced along with alliance member on chain
+              (5pts)</label><br>
+            <input type="radio" id="option9" name="bchainOption" value="Balanced alone on chain">
+            <label for="option9" style="font-size: 14px; color: white;">Balanced alone on chain (3pts)</label><br>
+            <input type="radio" id="option91" name="bchainOption" value="Not balanced on chain">
+            <label for="option91" style="font-size: 14px; color: white;">Not balanced on chain (0p)</label><br>
+            <input type="radio" id="option945" name="bchainOption"
+              value="Balanced but touches floor within 5 seconds of buzzer">
+            <label for="option945" style="font-size: 14px; color: white;">Balanced but touches floor within 5 seconds of
+              buzzer (0 pts)</label><br>
+
+            <div style="margin-top: 20px;"></div>
+
+            <h3 style="color: white; font-size: 1.4rem;">Is the Robot Parked on the floor (under the stage) at the end
+              of the match?</h3>
+            <div style="margin-top: 10px;"></div>
+            <input type="radio" id="option10" name="parkingOption" value="Yes">
+            <label for="option10" style="color: white;">Yes</label><br>
+            <input type="radio" id="option11" name="parkingOption" value="No">
+            <label for="option11" style="color: white;">No</label><br>
+
+            <div style="margin-top: 20px;"></div>
+            <h3 style="color: white; font-size: 1.4rem;">Did the Robot score a note in the Trap?</h3>
+
+            <input type="radio" id="option12" name="Trapoption" value="Yes">
+            <label for="option12" style="color: white;">Yes</label><br>
+            <input type="radio" id="option13" name="Trapoption" value="No">
+            <label for="option13" style="color: white;">No</label><br>
+
+
+          </div>
+          <div id="PostGame" class="heading">
+            <div style="margin-top: 20px;"></div>
+            <h2 style="color: white;">Post Game</h2>
+
+            <h6>Almost Done.</h6>
+            <div style="margin-top: 20px;"></div>
+
+            <h3 style="color: white; font-size: 1.4rem;">Does the Robot Experience Connection Issues?</h3>
+            <input type="radio" id="option82" name="Connectionoption" value="More than half of match">
+            <label for="option82" style="color: white;">Yes (More than half of match)</label><br>
+            <input type="radio" id="option92" name="Connectionoption" value="Less than half of match">
+            <label for="option92" style="color: white;">Yes (Less than half of match)</label><br>
+            <input type="radio" id="option93" name="Connectionoption" value="No">
+            <label for="option93" style="color: white;">No</label><br>
+
+            <div style="margin-top: 20px;"></div>
+            <h3 style="color: white; font-size: 1.4rem;">Comments:</h3>
+            <textarea id="postGameComments" name="postGameComments" rows="4" cols="50" style="background: none;
+  
+  outline: none;
+  
+  color: white; 
+  margin-top: 10px;"></textarea>
+
+          </div>
+
+          <button id="finish-btn" class="finish-btn" style="font-family: 'Poppins', sans-serif;">Send info</button>
+
+          <p class="text">
+            Made by Yuvraj
+
+          </p>
+          <p class="text">
+            All Rights Reserved by 5667 <a target="_blank" href="https://github.com/NAHSRobotics-Team5667">Find more</a>
+
+          </p>
+        </div>
+        </form>
+
+
+      </div>
+
+  </main>
+
+  <!-- Javascript file -->
+
+  <script src="appScouter.js"></script>
+</body>
+
+</html>
