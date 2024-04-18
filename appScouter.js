@@ -27,7 +27,7 @@ document.getElementById('start-btn').addEventListener('click', function () {
       clearTimeout(timerId);
       document.getElementById('timer').innerHTML = '0:00 s';
       window.scrollTo(500, 1450);
-      var timeLeft2 = 2 * 60 + 15; // 2 minutes and 15 seconds
+      var timeLeft2 = 60+55; // 2 minutes and 15 seconds
       audio.play();
       var timerId2 = setInterval(countdown2, 1000);
 
