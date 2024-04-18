@@ -125,6 +125,12 @@
     "password": "=samar7",
     "type": "Scout",
     "name": "Samar"
+  },
+  {
+    "username": "stucke.098",
+    "password": "*patrick*2",
+    "type": "Scout",
+    "name": "Patrick"
   }
 
 ]
